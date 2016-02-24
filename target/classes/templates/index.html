@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Chatti</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+
+        <form method="POST" action="/viesti">
+            Käyttäjätunnus:<br/>
+            <input type="text" name="kayttaja"/><br/>
+            Sisältö:<br/>
+            <input type="text" name="sisalto"></input><br/>
+            <input type="submit" value="Lisää viesti"/>
+        </form>
+
+        <hr/>
+
+        <div th:each="viesti : ${viestit}">
+            <table border='1' style='width:100%'>
+
+                <tr>
+                    <td th:text='${viesti.kayttajaTeksti}'></td>
+                    <td th:text="${viesti.sisalto}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td th:text="${viesti.aika}"></td>                   
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
