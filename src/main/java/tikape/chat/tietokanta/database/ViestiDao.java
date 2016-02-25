@@ -67,12 +67,12 @@ public class ViestiDao implements Dao{
     }
 
     public void createViesti(int kayttaja, String sisalto) throws SQLException {
-        int viestiId = countViesti(database.getConnection()) + 1;
+//        int viestiId = countViesti(database.getConnection()) + 1;
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        Viesti viesti = new Viesti(viestiId, sisalto, now, kayttaja);
+//        Viesti viesti = new Viesti(viestiId, sisalto, now, kayttaja);
   
-        String sql = "INSERT INTO Viesti (id, sisalto, aika, kayttaja) "
-                + "VALUES (" + viestiId + ", '" + sisalto + "', '" + now + "', " + kayttaja + ");";
+        String sql = "INSERT INTO Viesti (sisalto, aika, kayttaja) "
+                + "VALUES ('" + sisalto + "', '" + now + "', " + kayttaja + ");";
         database.update(sql);
     }
     

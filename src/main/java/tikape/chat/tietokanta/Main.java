@@ -17,7 +17,8 @@ import tikape.chat.tietokanta.domain.Kayttaja;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Database database = new Database("jdbc:sqlite:chat.db");
+//        Database database = new Database("jdbc:sqlite:chat.db");
+        Database database = new Database("jdbc:mysql://users.cs.helsinki.fi:58741/chat", "chanta", "chalasana");
         ViestiDao viestiDao = new ViestiDao(database);
         KayttajaDao kayttajaDao = new KayttajaDao(database);
 

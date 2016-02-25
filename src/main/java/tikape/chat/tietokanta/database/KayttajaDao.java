@@ -82,8 +82,8 @@ public class KayttajaDao implements Dao {
     public Kayttaja findOrCreateByTunnus(String tunnus) throws SQLException {
         Kayttaja kayttaja = findByTunnus(tunnus);
         if (kayttaja == null) {
-            int kayttajaId = countKayttaja() + 1;
-            String sql = "INSERT INTO Kayttaja (id, tunnus) VALUES (" + kayttajaId + ",'" + tunnus + "');";
+//            int kayttajaId = countKayttaja() + 1;
+            String sql = "INSERT INTO Kayttaja (tunnus) VALUES ('" + tunnus + "');";
             database.update(sql);
         }
         kayttaja = findByTunnus(tunnus);

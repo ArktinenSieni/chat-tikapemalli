@@ -7,13 +7,24 @@ public class Database {
 
     private String databaseAddress;
     private Boolean debug = true;
+    private String username;
+    private String password;
 
     public Database(String databaseAddress) throws ClassNotFoundException {
         this.databaseAddress = databaseAddress;
     }
+    
+    public Database(String databaseAddress, String username, String password) throws ClassNotFoundException {
+        this.databaseAddress = databaseAddress;
+        this.username = username;
+        this.password = password;
+    }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(databaseAddress);
+        if (username == null || password == null) {
+            return DriverManager.getConnection(databaseAddress);
+        }
+        return DriverManager.getConnection(databaseAddress, username, password);
     }
     
     public int update(String updateQuery) throws SQLException {
